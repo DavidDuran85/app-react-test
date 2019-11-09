@@ -10,8 +10,8 @@ import PostApi from './components/api-post';
     return (
       <div className="container">
         <div className="section">
-          {/* <Photos /> */}
-          <PostApi />
+          <Photos />
+          {/*<PostApi />*/}
         </div>
       </div>
       
