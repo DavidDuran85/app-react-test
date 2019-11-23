@@ -1,7 +1,14 @@
 2019-11-23 ejercicios
 
+- React Router
+
 -Dado un arreglo/lista de elementos crear un componente de tabla que muestre las propiedades indicadas
 
 - Modal con contenido dinamico
 
 -tabs con contenido dinamico
+
+
+git reset --hard //elimina todos los cambios de produccion
+
+git checkout master // cambia de branch
