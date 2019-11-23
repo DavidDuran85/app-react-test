@@ -12,3 +12,46 @@
 git reset --hard //elimina todos los cambios de produccion
 
 git checkout master // cambia de branch
+
+git checkout -b feature/react-router
+
+npm install react-router-dom -save
+
+
+
+git status
+
+git add .
+
+git commit -m "App Tabs"
+git branch
+git push origin feature/react-router
+
+-Tabla dinamica
+
+elementos de listas/arreglos
+objeto configuracion
+
+[
+    {
+        id: 1,
+        name: 'Alan',
+        firstname: 'Mendoza',
+        lastname: 'Rosales',
+    },
+    {
+        id: 2,
+        name: 'Juan',
+        firstname: 'Mendoza',
+        lastname: 'Rosales',
+    },
+    {
+        id: 3,
+        name: 'Raul',
+        firstname: 'Mendoza',
+        lastname: 'Rosales',
+    },
+]
+
+npm install prop-types --save  //instalar prop types
+npm uninstall prop-type  //desinstalar prop types
