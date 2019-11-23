@@ -1,0 +1,7 @@
+2019-11-23 ejercicios
+
+-Dado un arreglo/lista de elementos crear un componente de tabla que muestre las propiedades indicadas
+
+- Modal con contenido dinamico
+
+-tabs con contenido dinamico
