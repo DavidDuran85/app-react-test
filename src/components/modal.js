@@ -1,35 +1,24 @@
 import React, { Component} from 'react';
 
-const Modal = ({ children, closeModal, modalState, title }) => {
-    if(!modalState) {
-        return null;
-      }
-    else{
-        console.log('componente modal')
+const Modal = ({children, className, onClose, buttonsFooter, title}) => {
         return(
-            <div className="modal is-active">
-              <div className="modal-background" onClick={closeModal} />
+            <div className={`modal ${className}`}>
+              <div className="modal-background" onClick={onClose}/>
               <div className="modal-card">
                 <header className="modal-card-head">
                   <p className="modal-card-title">{title}</p>
-                  <button className="delete" onClick={closeModal} />
+                  <button className="delete" onClick={onClose}/>
                 </header>
                 <section className="modal-card-body">
-                  <div className="content">
-                    {children}
-                  </div>
+                  {children}
                 </section>
                 <footer className="modal-card-foot">
-                  <a className="button" onClick={closeModal}>Cerrar</a>
-                  <a className="button is-success" onClick={closeModal}>Aceptar</a>
+                  {buttonsFooter}
+                 
                 </footer>
               </div>
             </div>
           );
-    }
-        
-        
-    
 }
 
 export default Modal;

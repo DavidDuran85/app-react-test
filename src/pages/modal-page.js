@@ -1,86 +1,57 @@
-import React, { Component } from 'react';
-import api from '../config/api';
+import React, { Component, Fragment } from 'react';
 import Modal from '../components/modal';
 
 class ModalPage extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            users: [],
-            posts: [],
-            tipo: '',
-            titulo: '',
-            mensaje: '',
-            modalState: false
-        }
-        //this.toggleModal = this.toggleModal.bind(this);
+    state = {
+        classNameModal:'',
+        title:'DDV'
     }
-    
-    componentDidMount = async () => {
-        await this.loadUsers()
-        await this.loadPost()
-    }   
-    loadUsers = async () => {
-        let { data } = await api.get('/users?id=1')
+    showModal= () => {
         this.setState({
-            users : data
+            classNameModal: 'is-active'
         })
     }
-    loadPost = async () => {
-        let { data } = await api.get('/posts?id=3')
+    hideModal= () => {
         this.setState({
-            posts : data
+            classNameModal: ''
         })
-        
     }
-    toggleModal= (tipoDato) => {    
-        let {
-            tipo,
-            users,
-            posts
-        } = this.state
-        if (tipoDato === 'usuario') {
-            console.log(users[0].name) 
-            this.setState({
-                titulo: users[0].name + ' '+ users[0].phone, 
-                mensaje: users[0].name+' - '+users[0].email
-            })
-            console.log(this.state.titulo) 
-        } else {
-            console.log('post') 
-            this.setState({
-                titulo: posts[0].title,
-                mensaje: posts[0].body
-            })
-        }
-        this.setState((prev, props) => {
-        const newState = !prev.modalState;
-        
-        return { modalState: newState };
-        });
-    }
-    
     render(){
         let{
-            users,
-            posts
-        }= this.state
-        return (
-            <div className='container'>
-                <a className='button is-danger' onClick={ () => this.toggleModal('usuario')}>
-                    <strong>Usuarios</strong>
-                </a>
-                <a className='button is-link' onClick={() => this.toggleModal('post')}>
-                    <strong>Post</strong>
-                </a>
+            classNameModal,
+            title
+        } = this.state
+       return (
+            <div>
+                <button 
+                onClick={this.showModal}
+                className="button is-success">
+                    Mostrar
+                </button>
+                {/* <button 
+                onClick={this.hideModal}
+                className="button is-success">
+                    Ocultar
+                </button> */}
                 <Modal 
-                    closeModal={this.toggleModal} 
-                    modalState={this.state.modalState} 
-                    title={this.state.titulo}>
-                    <p>{this.state.mensaje}</p>
+                    onClose={this.hideModal}
+                    className={classNameModal}
+                    title={title}
+                    buttonsFooter={
+                       <Fragment>
+                        <a className="button is-success" onClick={this.hideModal} >Save</a>
+                        <a className="button is-danger" onClick={this.hideModal} >Cancel</a>
+                       </Fragment>
+                    }
+                    >
+                    <div>
+                        <h1 className="title is-1">
+                            Componente Modal
+                        </h1>
+                    </div>
+                    
                 </Modal>
             </div>
-            
             )
     }
 }
