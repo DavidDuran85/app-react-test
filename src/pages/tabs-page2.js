@@ -1,8 +1,20 @@
 import React, { Component, Fragment } from 'react'
 import Tabs from '../components/tabs'
+import TabsV2 from '../components/tabs-v2'
 
-class TabsPage extends Component{
+class TabsPagev2 extends Component{
+    state={
+        currentTab: 'introduccion'
+    }
+    handleChangeTab = ({ id }) => {
+        this.setState({
+            currentTab:id
+        })
+    }
     render(){
+        let {
+            currentTab
+        } = this.state
         let tabs =[
             {
                 id:'introduccion',
@@ -21,10 +33,17 @@ class TabsPage extends Component{
         ]
         return(
             <div>
-                <Tabs tabs={tabs} />
+                <Tabs 
+                    tabs={tabs}/>
+                <hr />
+                <TabsV2 
+                    handleChangeTab = {this.handleChangeTab}
+                    currentTab={currentTab}
+                    tabs={tabs}/>
             </div>
+            
         )
     }
 }
 
-export default TabsPage
+export default TabsPagev2

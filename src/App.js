@@ -3,7 +3,7 @@ import TablePage from './pages/table-page';
 import ModalPage from './pages/modal-page';
 import Modal_Page from './pages/modal_page';
 import TabPage from './pages/tab-page';
-import TabsPage from './pages/tabs-page';
+import TabsPagev2 from './pages/tabs-page2';
 import './App.css';
 import {
   BrowserRouter as Router, //Enrutador
@@ -102,7 +102,7 @@ class App extends Component{
         />
         <Route 
           path="/tabs" exact
-          component={TabsPage}
+          component={TabsPagev2}
         />
       </Switch>
     </Router>
