@@ -101,7 +101,7 @@ class App extends Component{
           component={ModalPage}
         />
         <Route 
-          path="/tabs" exact
+          path="/tabs/:id" 
           component={TabsPagev2}
         />
       </Switch>

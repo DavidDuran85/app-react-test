@@ -1,10 +1,25 @@
 import React, { Component, Fragment } from 'react'
 import Tabs from '../components/tabs'
 import TabsV2 from '../components/tabs-v2'
+import api from '../config/api';
 
 class TabsPagev2 extends Component{
     state={
-        currentTab: 'introduccion'
+        currentTab: 'introduccion',
+        user : null
+    }
+    componentDidMount = async () => {
+        //console.log('this.props', this.props.match.params)
+        await this.load()
+    }
+    load = async () => {
+        let{
+            match: { params: { id } }
+        } = this.props
+        let {data} = await api.get(`/users/${id}`)
+        this.setState({
+            user:data
+        })
     }
     handleChangeTab = ({ id }) => {
         this.setState({
@@ -13,21 +28,32 @@ class TabsPagev2 extends Component{
     }
     render(){
         let {
-            currentTab
+            currentTab,
+            user
         } = this.state
+        if(!user){
+            return <div>
+                CArgando
+            </div>
+        }
         let tabs =[
             {
                 id:'introduccion',
-                label: 'Introdución',
+                label: 'Datos Generales',
                 content: <div>
-                    Texto de introduccion
+                    Nombre 
+                    {
+                        user.name
+                    }
                 </div>
             },
             {
                 id:'profile',
-                label: 'Perfil',
+                label: 'Dirección',
                 content: <div>
-                    Perfil de Usuario
+                   {
+                        user.address.street
+                    }
                 </div>
             },
         ]

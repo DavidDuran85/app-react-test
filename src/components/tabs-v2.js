@@ -20,6 +20,7 @@ const Tabs = ({
                         tabs.map( tab => 
                         <li 
                             onClick={() => handleChangeTab(tab)}
+                            key={tab.id}
                             className={tab.id === currentTab ? 'is-active' : ''}>
                             <a>
                             <span>{tab.label}</span>
