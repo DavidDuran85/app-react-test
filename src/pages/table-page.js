@@ -2,10 +2,14 @@ import React, {Component} from 'react';
 import Table from '../components/table';
 import api from '../config/api';
 import {Link} from 'react-router-dom';
+import { toast } from 'react-toastify';
+import SpinnerSpinki from 'react-spinkit' ;
+import LoadingBar  from 'react-top-loading-bar' ;
 
 class TablePage extends Component{
     state = {
-        users: []
+        users: [],
+        loadingBarProgress:0
     }
 
     componentDidMount = async () =>{
@@ -16,6 +20,7 @@ class TablePage extends Component{
         this.setState({
             users: data
         })
+        
         //console.log('data',data)
     }
 
@@ -26,14 +31,37 @@ class TablePage extends Component{
         let index = users.findIndex( l => user.id === l.id)
         users.splice(index, 1)
         this.setState({
-            users: users
+            loadingBarProgress:70
+        })
+
+        setTimeout(() => {
+            this.setState({
+                users: users,
+                loadingBarProgress:100
+            })
+            toast.success("Success Notification !", {
+                position: toast.POSITION.BOTTOM_RIGHT
+              });
+        }, 500)
+
+        
+    }
+    onLoaderFinished = () => {
+        this.setState({
+            loadingBarProgress :0
         })
     }
     render(){
         let{
-            users
+            users,
+            loadingBarProgress
         }= this.state
         return ( <div>
+            <LoadingBar 
+            progress={loadingBarProgress}
+            height={8}
+            color="blue"
+            onLoaderFinished={this.onLoaderFinished}/>
             <Table 
                 config= {
                     {
@@ -57,7 +85,7 @@ class TablePage extends Component{
                                             className="button is-danger">
                                                 Eliminar
                                             </button>
-                                            <Link className="button is-link" to={`/tabs/${element.id}`}>
+                                            <Link className="button is-link" to={`/tabs/${element.id}/${element.name}`}>
                                             Ver detalle
                                             </Link>
                                         </div>
