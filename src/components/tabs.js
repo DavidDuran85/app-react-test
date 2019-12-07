@@ -4,7 +4,7 @@ class Tabs extends Component{
     constructor(props){
         super(props)
         //let initialTab =this.props.tabs[0]
-        let [initialTab] =this.props.tabs
+        let [initialTab] =this.props.tabs //obtener el primer elemento //Destructuring con arreglos
 
         this.state= {
             currentTab: initialTab.id

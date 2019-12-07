@@ -7,9 +7,13 @@ class Layout extends Component{
         return ( <div>
             <ToastContainer />
             <Nabvar />
+            
+            <div className="container container-main">
             {
                 this.props.children  
             }
+            </div>
+            
         </div>)
     }
 }

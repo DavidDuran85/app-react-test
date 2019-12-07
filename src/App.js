@@ -17,12 +17,11 @@ import Modal_Page from './pages/modal_page';
 import TabPage from './pages/tab-page';
 import TabsPagev2 from './pages/tabs-page2';
 
-import 'react-toastify/dist/ReactToastify.css';
+
 
 class App extends Component{
   render () {
     return (
-    <div className="container">
     <Router>
         
       {/* <nav className="navbar">
@@ -57,7 +56,6 @@ class App extends Component{
         </Switch>
       </Layout>
     </Router>
-    </div>
    )
   }
 }

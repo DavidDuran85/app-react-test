@@ -10,10 +10,10 @@ class Table extends Component {
 
         console.log('columns', data)
         return (
-            <div className="card">
+            <div className="card is-shadow">
                 <div className="card-header">
                     <p className="card-header-title">
-                       {title }
+                       {title || 'Listado'}
                     </p>
                 </div>
                 <div className="card-content is-fullwidth">
@@ -23,7 +23,8 @@ class Table extends Component {
                             {
                                 columns.map( column => (
                                     <th key={column.name}>
-                                        { column.title
+                                        { 
+                                            column.title
                                         }
                                     </th>
                                 ))
@@ -40,7 +41,6 @@ class Table extends Component {
                                                 columns.map( column => <td key={column.name}>
                                                 {
                                                     column.formatter ? column.formatter(element) : element[column.name] || 'N/A'
-                                                    //element[column.name]
                                                 }
                                                 </td>)
                                             }

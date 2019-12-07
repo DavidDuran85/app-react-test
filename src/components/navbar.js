@@ -16,12 +16,17 @@ class Navbar extends Component{
         let{
             collapsed
           } = this.state
+
+          //let { collapsed:open} = this.state
+          //let open = this.state.collapsed
         return (
-            <nav className="navbar" role="navigation" aria-label="main navigation">
+            <nav className="navbar is-dark is-fixed-top " role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-              <a className="navbar-item" href="#">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
-              </a>
+              <Link className="navbar-item" to="/">
+                <img src='atom-logo-white.png' width="112" height="28" />
+                {/* <img src='tenor.gif' /> */}
+                {/* <img src='logo.svg' width="112" height="28" /> */}
+              </Link>
       
               <a role="button" 
                 onClick={this.handleMenu}
