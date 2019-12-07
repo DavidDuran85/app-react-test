@@ -27,6 +27,11 @@ git commit -m "App Tabs"
 git branch
 git push origin feature/react-router
 
+git fetch
+
+git checkout master
+git pull origin master
+
 -Tabla dinamica
 
 elementos de listas/arreglos
