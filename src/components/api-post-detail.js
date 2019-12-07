@@ -1,7 +1,7 @@
 import React from 'react'
 
 const PostApiDetail = ({data, color, usuario}) => {
-    console.log("color: ", color)
+    //console.log("color: ", color)
     return(
         <article className={"message is-"+color}>
             <div className="message-header" key={data.id}>

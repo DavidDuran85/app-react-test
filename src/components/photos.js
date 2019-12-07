@@ -14,10 +14,17 @@ class Photos extends Component{
         this.state= {
             photos: [],
             user: null,
-            items: []
-        }
-    }
+			items: [],
+			currentPhoto: null
+		}
+		console.log('constructor')
+	}
+	static getDerivedStateFromProps= () => {
+		console.log('getDerivedStateFromProps')
+		return null
+	}
     componentDidMount = async () =>{
+		console.log('componentDidMount')
         try{
             const body= await instance.get('/photos?_page=2&_limit=10');
             //console.log('data =>',body.data)
@@ -28,21 +35,40 @@ class Photos extends Component{
             console.log('Error => ', error)
         }
         
-    }
+	}
+	handleClick = (data) =>{
+		console.log(data)
+		this.setState({
+			currentPhoto: data
+		})
+	}
+
+
     render(){
+		console.log('render')
         //destructuring
-        const { photos }= this.state
+		const { photos, currentPhoto }= this.state
+		
+		const content = currentPhoto ? (<PhotosDetail data={currentPhoto}/>) : (<h1 className="title is-l">No selecciono foto</h1>)
         //const photos = this.state.photos
-        return <div className="columns is-multiline">
-            {
-                photos.map(photos => 
-                (
-                    <div className="column is-6" key={photos.id}>
-                        <PhotosDetail  data={photos} />
-                    </div>)
-                )
-            }
-        </div>
+        return (
+		<div>
+			{
+				content
+			}
+			<div className="columns is-multiline">
+			{
+				photos.map(photos => 
+				(
+					<div className="column is-6" key={photos.id}>
+						<PhotosDetail  
+						onClick={this.handleClick}
+						data={photos} />
+					</div>)
+				)
+			}
+			</div>
+		</div>)
         /*
         return <div>
             Componente de Photos
