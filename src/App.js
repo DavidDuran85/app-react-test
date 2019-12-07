@@ -1,5 +1,7 @@
 import React, { Component} from 'react';
 import TablePage from './pages/table-page';
+import ModalPage from './pages/modal-page';
+import Modal_Page from './pages/modal_page';
 import './App.css';
 import {
   BrowserRouter as Router, //Enrutador
@@ -92,9 +94,10 @@ class App extends Component{
         <Route path="/" exact>
           <TablePage />
         </Route>
-        <Route path="/modal" exact>
-          Componente Modal
-        </Route>
+        <Route 
+          path="/modal" exact
+          component={ModalPage}
+        />
         <Route path="/tabs" exact>
           Componente Tabs
         </Route>
